@@ -12,12 +12,7 @@ const MockResult = () => {
     const [reviewMode, setReviewMode] = useState(false);
     const confettiFired = useRef(false);
 
-    if (!questions.length) {
-        navigate('/dashboard');
-        return null;
-    }
-
-    const { score, total, accuracy, wrongAnswers } = evaluateRound(questions, userAnswers);
+    const { score, total, accuracy } = evaluateRound(questions, userAnswers);
     const passed = isPass(score);
 
     useEffect(() => {
@@ -32,6 +27,11 @@ const MockResult = () => {
             setTimeout(() => confetti({ particleCount: 100, spread: 60, origin: { y: 0.4 } }), 800);
         }
     }, [passed]);
+
+    if (!questions.length) {
+        navigate('/dashboard');
+        return null;
+    }
 
     if (reviewMode) {
         return (

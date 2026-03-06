@@ -9,6 +9,7 @@ import Result from './pages/Result';
 import MockTest from './pages/MockTest';
 import MockResult from './pages/MockResult';
 import Settings from './pages/Settings';
+import QuickNotes from './pages/QuickNotes';
 
 const ProtectedRoute = ({ children }) => {
   const user = getCurrentUser();
@@ -43,6 +44,10 @@ const App = () => {
         <Route
           path="/settings"
           element={<ProtectedRoute><Settings /></ProtectedRoute>}
+        />
+        <Route
+          path="/quick-notes"
+          element={<ProtectedRoute><QuickNotes /></ProtectedRoute>}
         />
         {/* Default: redirect to dashboard (or login if unauthenticated) */}
         <Route

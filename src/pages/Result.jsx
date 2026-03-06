@@ -16,16 +16,18 @@ const Result = () => {
 
     const [reviewMode, setReviewMode] = useState(false);
 
+    const { score, total, accuracy } = evaluateRound(questions, userAnswers);
+
+    // Save the result (idempotent – only saves on first completion)
+    React.useEffect(() => {
+        if (!isReviewMode && roundId !== undefined && questions.length > 0) {
+            updateRoundResult(roundId, score, userAnswers);
+        }
+    }, [isReviewMode, roundId, score, userAnswers, questions.length]);
+
     if (!questions.length || !roundId) {
         navigate('/dashboard');
         return null;
-    }
-
-    const { score, total, accuracy, wrongAnswers } = evaluateRound(questions, userAnswers);
-
-    // Save the result (idempotent – only saves on first completion)
-    if (!isReviewMode) {
-        updateRoundResult(roundId, score, userAnswers);
     }
 
     const allRoundsCompleted = getProgress().completedRounds.length >= TOTAL_ROUNDS;
@@ -100,7 +102,6 @@ const Result = () => {
                         score={score}
                         total={total}
                         accuracy={accuracy}
-                        wrongAnswers={wrongAnswers}
                         onReview={() => setReviewMode(true)}
                         onRetry={handleRetry}
                         onNext={handleNext}

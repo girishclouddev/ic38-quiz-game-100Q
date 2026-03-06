@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, Target } from 'lucide-react';
 
-const ResultCard = ({ score, total, accuracy, wrongAnswers = [], onReview, onRetry, onNext, isPassed }) => {
+const ResultCard = ({ score, total, accuracy, onReview, onRetry, onNext, isPassed }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}

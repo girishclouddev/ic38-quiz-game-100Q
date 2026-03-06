@@ -24,7 +24,6 @@ const Round = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [userAnswers, setUserAnswers] = useState({});
-    const [direction, setDirection] = useState(1);
 
     useEffect(() => {
         if (!isAvailable) {
@@ -38,7 +37,6 @@ const Round = () => {
         setUserAnswers(newAnswers);
 
         if (currentIndex < questions.length - 1) {
-            setDirection(1);
             setCurrentIndex(i => i + 1);
         } else {
             // Navigate to result

@@ -3,15 +3,17 @@ import questionsData from '../data/questions.json';
 // Return questions for a specific round (1-10)
 export const getQuestionsForRound = (roundId) => {
     const roundIdx = parseInt(roundId, 10) - 1;
-    const startIndex = roundIdx * 10;
-    const endIndex = startIndex + 10;
+    const startIndex = roundIdx * 20;
+    const endIndex = startIndex + 20;
+    const qs = Array.isArray(questionsData) ? questionsData : questionsData.questions;
     // Fallback if there are fewer questions, though mock implies 500+
-    return questionsData.questions.slice(startIndex, endIndex);
+    return qs.slice(startIndex, endIndex);
 };
 
 // Return 50 random questions for mock test
 export const getQuestionsForMockTest = () => {
-    const allQs = [...questionsData.questions];
+    const qs = Array.isArray(questionsData) ? questionsData : questionsData.questions;
+    const allQs = [...qs];
     // Fisher-Yates shuffle
     for (let i = allQs.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -21,7 +23,7 @@ export const getQuestionsForMockTest = () => {
 };
 
 export const getTotalRounds = () => {
-    return 10; // Fixed as requested: 10 rounds, 100 questions
+    return 25; // Fixed as requested: 25 rounds, 500 questions
 };
 
 export const evaluateRound = (questions, userAnswers) => {

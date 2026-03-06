@@ -92,7 +92,7 @@ const Dashboard = () => {
                 >
                     <div className="flex justify-between mb-2">
                         <span className="text-sm font-semibold text-slate-700">Overall Progress</span>
-                        <span className="text-sm font-bold text-primary-600">{completedRounds.length * 10} / 100 Qs</span>
+                        <span className="text-sm font-bold text-primary-600">{completedRounds.length * 20} / 500 Qs</span>
                     </div>
                     <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
                         <motion.div
@@ -166,9 +166,9 @@ const Dashboard = () => {
                                     {state === 'locked' && <Lock className="w-4 h-4 text-slate-400" />}
                                 </div>
                                 <p className="text-3xl font-extrabold text-slate-800">{roundId}</p>
-                                <p className="text-xs text-slate-500 mt-1">10 Questions</p>
+                                <p className="text-xs text-slate-500 mt-1">20 Questions</p>
                                 {state === 'completed' && (
-                                    <p className="text-sm font-bold text-emerald-600 mt-1">{roundScore}/10</p>
+                                    <p className="text-sm font-bold text-emerald-600 mt-1">{roundScore}/20</p>
                                 )}
                             </motion.div>
                         );

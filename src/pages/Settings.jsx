@@ -5,7 +5,7 @@ import { logoutUser } from '../utils/auth';
 import { getProgress, resetProgress } from '../utils/storage';
 import { getTotalRounds } from '../utils/examEngine';
 import {
-    LogOut, Trash2, Trophy, BookOpen, RefreshCcw, ChevronRight, ArrowLeft
+    LogOut, Trash2, Trophy, BookOpen, RefreshCcw, ChevronRight, ArrowLeft, BookMarked, Sparkles
 } from 'lucide-react';
 
 const TOTAL_ROUNDS = getTotalRounds();
@@ -107,6 +107,36 @@ const Settings = () => {
                                 </button>
                             ))
                         )}
+                    </motion.div>
+
+                    {/* Quick Notes */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="glass-card rounded-2xl overflow-hidden"
+                    >
+                        <div className="p-4 border-b border-slate-100 flex items-center gap-2">
+                            <Sparkles className="w-4 h-4 text-amber-500" />
+                            <h2 className="font-bold text-slate-700 text-sm uppercase tracking-wide">Study Material</h2>
+                        </div>
+                        <button
+                            onClick={() => navigate('/quick-notes')}
+                            className="w-full flex items-center justify-between p-4 hover:bg-amber-50 transition-all group"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-2 rounded-xl shadow-md group-hover:scale-110 transition-transform">
+                                    <BookMarked className="w-5 h-5 text-white" />
+                                </div>
+                                <div className="text-left">
+                                    <p className="font-bold text-slate-700">Quick Notes 📖</p>
+                                    <p className="text-xs text-slate-400">LIC IC-38 Short Revision · Gujarati</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <span className="text-xs bg-amber-100 text-amber-700 font-bold px-2 py-0.5 rounded-full">NEW</span>
+                                <ChevronRight className="w-4 h-4 text-slate-400" />
+                            </div>
+                        </button>
                     </motion.div>
 
                     {/* Danger Zone */}
