@@ -116,15 +116,15 @@ const Dashboard = () => {
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
                             onClick={() => navigate('/mock-test')}
-                            className="w-full py-4 rounded-2xl btn-gradient font-bold text-lg flex items-center justify-center gap-3 shadow-xl"
+                            className="w-full py-4 px-4 rounded-2xl btn-gradient font-bold text-base sm:text-lg flex items-center justify-center gap-2 sm:gap-3 shadow-xl"
                         >
-                            <Trophy className="w-6 h-6" />
+                            <Trophy className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
                             Start Mock Exam 🏆
                         </motion.button>
                     ) : (
-                        <div className="w-full py-4 rounded-2xl bg-white/30 border border-white/30 text-white/60 font-bold text-lg flex items-center justify-center gap-3 cursor-not-allowed">
-                            <Lock className="w-5 h-5" />
-                            Mock Exam — Locked (Complete all rounds)
+                        <div className="w-full py-4 px-4 rounded-2xl bg-white/30 border border-white/30 text-white/80 font-bold text-sm sm:text-lg flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 cursor-not-allowed text-center">
+                            <Lock className="w-5 h-5 shrink-0" />
+                            <span>Mock Exam Locked <span className="block sm:inline text-xs sm:text-base font-normal opacity-80">(Complete all rounds)</span></span>
                         </div>
                     )}
                 </motion.div>
